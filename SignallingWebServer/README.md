@@ -7,6 +7,7 @@ Wilbur is a small intermediary application that sits between streamers and other
 Differences of behaviour from the old cirrus are described [here](from_cirrus.md).
 
 ## Building
+
 Building is handled by `npm` and `tsc`. However, the easiest method to install and build everything is to invoke:
 
 ```
@@ -30,15 +31,21 @@ In the `/common`, `/Signalling`, and `/SignallingWebServer` directories (in that
 Each of these will output built files into the `build` or `dist` directory.
 
 ## Running
+
 After you have build the server you can run it with both `node` directly or the `npm start` script.
+
 ```
 npm start -- [arguments]
 ```
+
 or
+
 ```
 node build/index.js [arguments]
 ```
+
 Invoking `npm start -- --help` or `node build/index.js --help` will display the configuration options.
+
 ```
 Usage: node build/index.js [options]
 
@@ -78,7 +85,9 @@ Options:
                                     specified at launch. (default: false)
   -h, --help                        Display this help text.
 ```
+
 These CLI options can also be described in a `config.json` (default config file overridable with --config_file) by specifying the command option name and value in a simple JSON object. eg.
+
 ```
 {
 	"log_folder": "logs",
@@ -94,16 +103,21 @@ These CLI options can also be described in a `config.json` (default config file 
 	"stdin": false
 }
 ```
+
 Given these options, to start the server with the closest behaviour as the old cirrus, you would invoke,
+
 ```
 npm start -- --console_messages --https_redirect verbose --serve --log_config --http_root Public --homepage player.html
 ```
+
 Note that `Public` being used as the http root assumes your Frontend is in that directory from the old behaviour of the scripts. The new convenience scripts (`platform_scripts` directory) will now build the frontend into the `www` directory.
 
 ## Development
+
 This implementation is built on the [Signalling](../Signalling) library which is supplied as a library for developing signalling applications. Visit its [documentation](../Signalling/docs) for more information.
 
 ### Self-signed certificates
+
 During development it may be useful to work with self-signed SSL certificates (e.g. HTTPS is required for some features like XR and microphone usage). Self signed certificates can be generated using the following instructions:
 
 1. Navigate to the `SignallingWebServer` directory.
@@ -118,6 +132,6 @@ During development it may be useful to work with self-signed SSL certificates (e
 ```
 
 ## Further Documentation
+
 - [Protocol Messages](../Common/docs/messages.md)
 - [Protocol Negotiation](../Signalling/docs/Protocol.md)
-
